@@ -1,5 +1,5 @@
-streamlit
-python-dotenv
+streamlit~=1.22.0
+python-dotenv~=1.0.1
 llama-index
 chromadb
 openai
