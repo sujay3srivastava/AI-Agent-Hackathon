@@ -7,12 +7,11 @@ from llama_index.core import VectorStoreIndex, SimpleDirectoryReader
 # Load environment variables from the .env file
 load_dotenv()
 os.environ['OPENAI_API_KEY'] = st.secrets['API_KEY']
-
+import sys
+print("Python version")
+print(sys.version)
 Settings.llm = OpenAI(temperature=0.2, model="gpt-3.5-turbo-0125")
 import chromadb
-__import__('pysqlite3')
-import sys
-sys.modules['sqlite3'] = sys.modules.pop('pysqlite3')
 from llama_index.vector_stores.chroma import ChromaVectorStore
 from llama_index.core import StorageContext
 
