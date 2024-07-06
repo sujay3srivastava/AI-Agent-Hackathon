@@ -3,4 +3,3 @@ python-dotenv~=1.0.1
 llama-index
 chromadb
 openai
-sqlite3~= 3.46.0
