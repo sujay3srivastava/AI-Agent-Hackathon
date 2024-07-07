@@ -31,36 +31,36 @@ documents2 = SimpleDirectoryReader(
 ).load_data()
 index2 = VectorStoreIndex.from_documents(documents2)
 query_engine2 = index2.as_query_engine()
-def home_page():
-    st.title('👨‍⚕️🩺🔗MedBrief')
-    st.markdown('<h2 style="font-size: 36px;">Dr. Bruce Wayne, Cardiologist</h2>', unsafe_allow_html=True)
-    name = st.text_input('Enter Patient name')
-    reason = st.text_area('Reason for Visit')
 
-    # define a tool
-    def multiply(a: float, b: float) -> float:
-        """Multiply two numbers and returns the product"""
-        return a * b
+st.title('👨‍⚕️🩺🔗MedBrief')
+st.markdown('<h2 style="font-size: 36px;">Dr. Bruce Wayne, Cardiologist</h2>', unsafe_allow_html=True)
+name = st.text_input('Enter Patient name')
+reason = st.text_area('Reason for Visit')
 
-    multiply_tool = FunctionTool.from_defaults(fn=multiply)
+# define a tool
+def multiply(a: float, b: float) -> float:
+    """Multiply two numbers and returns the product"""
+    return a * b
 
-    def add(a: float, b: float) -> float:
-        """Add two numbers and returns the sum"""
-        return a + b
+multiply_tool = FunctionTool.from_defaults(fn=multiply)
 
-    #
-    add_tool = FunctionTool.from_defaults(fn=add)
-    summary_tool = QueryEngineTool.from_defaults(
-        query_engine,
-        name="Patient Summary",
-        description="A RAG engine with medical details about the patient named {} and keeping in mind {}".format(name,
-                                                                                                                 reason),
-    )
-    agent = ReActAgent.from_tools([multiply_tool, add_tool, summary_tool], llm=llm, verbose=True)
-    if st.button("Get Medical Summary"):
-        if not name:
-            st.error("Please enter the patient's name.")
-        else:
+def add(a: float, b: float) -> float:
+    """Add two numbers and returns the sum"""
+    return a + b
+
+#
+add_tool = FunctionTool.from_defaults(fn=add)
+summary_tool = QueryEngineTool.from_defaults(
+    query_engine,
+    name="Patient Summary",
+    description="A RAG engine with medical details about the patient named {} and keeping in mind {}".format(name,
+                                                                                                             reason),
+)
+agent = ReActAgent.from_tools([multiply_tool, add_tool, summary_tool], llm=llm, verbose=True)
+if st.button("Get Medical Summary"):
+    if not name:
+        st.error("Please enter the patient's name.")
+    else:
             # response = agent.chat(
             # "Get medical summary qbout the patient named {} and keeping in mind {}".format(prompt_name, prompt_reason)
             # )
