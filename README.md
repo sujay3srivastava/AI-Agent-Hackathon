@@ -9,3 +9,6 @@ MedBrief is a Streamlit-based application designed to assist doctors by providin
 - **Patient Medical Summary**: Retrieves and summarizes patient's previous medical records for quick reference.
 - **Appointments Management**: Allows doctors to view and manage appointments.
 - **Chatbot Assistance**: Provides a chatbot for doctors to ask additional questions about the patient's medical history.
+
+## Streamlit Link 
+https://medbrief-nexuscare.streamlit.app/
