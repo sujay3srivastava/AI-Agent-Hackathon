@@ -31,10 +31,11 @@ documents2 = SimpleDirectoryReader(
 ).load_data()
 index2 = VectorStoreIndex.from_documents(documents2)
 query_engine2 = index2.as_query_engine()
+patient_names = ["Nancy Dew","Karlene Hizon" ,"Henry Johnson"]
 
 st.title('👨‍⚕️🩺🔗MedBrief')
 st.markdown('<h2 style="font-size: 36px;">Dr. Bruce Wayne, Cardiologist</h2>', unsafe_allow_html=True)
-name = st.text_input('Enter Patient name')
+name = st.selectbox("Patient Name", patient_names)
 reason = st.text_area('Reason for Visit')
 
 # define a tool
