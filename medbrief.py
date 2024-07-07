@@ -17,20 +17,20 @@ documents = SimpleDirectoryReader("./data").load_data()
 index = VectorStoreIndex.from_documents(documents)
 query_engine = index.as_query_engine()
 
-parser = LlamaParse(
-    api_key="llx-PZOWtLYdpJ1b7ovFkXvFYjmA9ONqmNmFj5pKrib4RrYBKGFT",  # can also be set in your env as LLAMA_CLOUD_API_KEY
-    result_type="markdown",  # "markdown" and "text" are available
-    num_workers=4,  # if multiple files passed, split in `num_workers` API calls
-    verbose=True,
-    language="en",  # Optionally you can define a language, default=en
-)
+# parser = LlamaParse(
+#     api_key="llx-PZOWtLYdpJ1b7ovFkXvFYjmA9ONqmNmFj5pKrib4RrYBKGFT",  # can also be set in your env as LLAMA_CLOUD_API_KEY
+#     result_type="markdown",  # "markdown" and "text" are available
+#     num_workers=4,  # if multiple files passed, split in `num_workers` API calls
+#     verbose=True,
+#     language="en",  # Optionally you can define a language, default=en
+# )
 
-file_extractor = {".pdf": parser}
-documents2 = SimpleDirectoryReader(
-    "./data", file_extractor=file_extractor
-).load_data()
-index2 = VectorStoreIndex.from_documents(documents2)
-query_engine2 = index2.as_query_engine()
+# file_extractor = {".pdf": parser}
+# documents2 = SimpleDirectoryReader(
+#     "./data", file_extractor=file_extractor
+# ).load_data()
+# index2 = VectorStoreIndex.from_documents(documents2)
+# query_engine2 = index2.as_query_engine()
 patient_names = ["Nancy Dew","Karlene Hizon" ,"Henry Johnson"]
 
 st.title('👨‍⚕️🩺🔗MedBrief')
