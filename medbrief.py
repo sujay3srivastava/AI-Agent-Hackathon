@@ -68,7 +68,7 @@ if st.button("Get Medical Summary"):
             st.subheader("Medical History")
             answer = query_engine.query(
                 "Get a short medical summary about the patient named {} and {}.Don't show allergies and medication here".format(name, reason))
-            st.write(answer)
+            st.write(answer.response)
             st.subheader("Relevant Tests")
             tests = query_engine.query(
                 "Show blood tests or scans results on patient named {} for {}.Check only reports where {} is mentioned".format(
