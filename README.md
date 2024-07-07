@@ -1,4 +1,4 @@
-### MedBrief App 👨‍⚕️🩺🔗
+# MedBrief App 👨‍⚕️🩺🔗
 
 ## Overview
 
