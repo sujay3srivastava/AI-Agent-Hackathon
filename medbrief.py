@@ -76,20 +76,20 @@ if st.button("Get Medical Summary"):
         st.subheader("Medical History")
         answer = query_engine.query(
             "Get a short medical summary about the patient named {} and {}.Don't show allergies and medication here".format(name, reason))
-        st.write(answer)
+        st.write(answer.response)
         st.subheader("Relevant Tests")
         tests = query_engine.query(
             "Show blood tests or scans results on patient named {} for {}.Check only reports where {} is mentioned".format(
                 name, reason, name))
-        st.write(tests)
+        st.write(tests.response)
         st.subheader("Current Medications")
         medication = query_engine.query(
             "Tell the medication the patient named {} is taking".format(name, reason))
-        st.write(medication)
+        st.write(medication.response)
         st.subheader("Allergies")
         allergies = query_engine.query(
             "Tell if patient named {} has any allergies".format(name, reason))
-        st.write(allergies)
+        st.write(allergies.response)
         # st.subheader("Test2")
         # response2 = query_engine2.query(
         #     "Show blood tests or scans results on patient named {} for {}.Check only reports where {} is mentioned"
