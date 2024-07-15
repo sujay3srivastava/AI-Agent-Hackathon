@@ -10,7 +10,7 @@ st.set_page_config(page_title="Frontdesk_Chat", page_icon="💬")
 st.markdown("Chat")
 st.sidebar.header("Chat")
 
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["API_KEY"])
 if "openai_model" not in st.session_state:
     st.session_state["openai_model"] = "gpt-3.5-turbo"
 
