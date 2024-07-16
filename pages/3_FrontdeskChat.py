@@ -89,7 +89,7 @@ if prompt := st.chat_input("What is up?"):
     response = agent.chat(prompt+" For using appointment tool, convert Date and time to strftime format and Patient name and symtoms as string")
     with st.chat_message("user"):
         st.markdown(prompt)
-    st.write(response)
+    st.write(response.response)
     with st.chat_message("assistant"):
         stream = client.ChatCompletion.create(
             model=st.session_state["openai_model"],
