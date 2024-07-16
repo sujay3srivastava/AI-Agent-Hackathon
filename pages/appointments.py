@@ -7,8 +7,8 @@ st.set_page_config(page_title="Appointments", page_icon="📅")
 st.markdown("Appointments")
 st.sidebar.header("Appointments")
 # Initialize a list to store appointments
-appointments_list = []
-
+if 'appointments_list' not in st.session_state:
+    st.session_state.appointments_list = []
 
 st.title("Appointments Page")
 
@@ -23,7 +23,7 @@ with st.form(key='appointment_form'):
 
 if submit_button:
     # Append the new appointment to the list
-    appointments_list.append({
+    st.session_state.appointments_list.append({
         'Patient Name': name,
         'Date': date.strftime("%Y-%m-%d"),
         'Time': time.strftime("%H:%M"),
@@ -32,7 +32,7 @@ if submit_button:
     st.success(f"Appointment scheduled for {name} on {date} at {time}.")
 
 # Display the appointments table
-if appointments_list:
+if st.session_state.appointments_list:
     st.header("Scheduled Appointments")
-    appointments_df = pd.DataFrame(appointments_list)
+    appointments_df = pd.DataFrame(st.session_state.appointments_list)
     st.dataframe(appointments_df)
